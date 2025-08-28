@@ -1,9 +1,15 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, config, render_template, request, redirect, url_for
 import json
 import smtplib
+import os
 from email.mime.text import MIMEText
 
 app = Flask(__name__)
+
+# Load email configuration from JSON file
+def load_email_config():
+    with open("config.json") as f:
+        return json.load(f)
 
 # Load donors from JSON file
 def load_donors():
@@ -23,8 +29,9 @@ def save_donor(donor):
 # Optional: Send confirmation email
 def send_email(to_email, subject, message):
     try:
-        sender_email = "unityhands10@gmail.com"        # 🔹 Replace with your Gmail
-        sender_password = "qmoz sylc uauj uowy"        # 🔹 Replace with Gmail App Password
+        email_config = load_email_config()
+        sender_email = email_config["MAIL_USERNAME"]
+        sender_password = email_config["MAIL_PASSWORD"]
 
         msg = MIMEText(message)
         msg["Subject"] = subject
