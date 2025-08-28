@@ -1,15 +1,14 @@
-from flask import Flask, config, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 import json
 import smtplib
 import os
 from email.mime.text import MIMEText
+from dotenv import load_dotenv   # ✅ add this
+
+# Load environment variables from .env
+load_dotenv()
 
 app = Flask(__name__)
-
-# Load email configuration from JSON file
-def load_email_config():
-    with open("config.json") as f:
-        return json.load(f)
 
 # Load donors from JSON file
 def load_donors():
@@ -29,9 +28,8 @@ def save_donor(donor):
 # Optional: Send confirmation email
 def send_email(to_email, subject, message):
     try:
-        email_config = load_email_config()
-        sender_email = email_config["MAIL_USERNAME"]
-        sender_password = email_config["MAIL_PASSWORD"]
+        sender_email = os.getenv("MAIL_USERNAME")    # ✅ now from .env
+        sender_password = os.getenv("MAIL_PASSWORD") # ✅ now from .env
 
         msg = MIMEText(message)
         msg["Subject"] = subject
