@@ -1,0 +1,50 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  text-align: center;
+  margin: 0;
+}
+
+.hero {
+  background: url("https://images.unsplash.com/photo-1526256262350-7da7584cf5eb") no-repeat center center/cover;
+  color: white;
+  padding: 100px 20px;
+}
+.hero h1 { font-size: 40px; }
+.hero p { font-size: 20px; }
+
+.donation-form {
+  background: white;
+  margin: 40px auto;
+  padding: 30px;
+  width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+.donation-form input, .donation-form select {
+  width: 90%;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.donation-form button {
+  background: green;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.donation-form button:hover { background: darkgreen; }
+
+.donors {
+  margin: 40px auto;
+  padding: 20px;
+  width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.donors ul { list-style: none; padding: 0; }
+.donors li { margin: 8px 0; }

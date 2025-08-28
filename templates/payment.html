@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fake Payment</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="donation-form">
+    <h2>💳 Payment Gateway</h2>
+    <p>Donating <b>${{donor['amount']}}</b> to <b>{{donor['cause']}}</b></p>
+    <form action="/success" method="POST">
+      <input type="hidden" name="name" value="{{donor['name']}}">
+      <input type="hidden" name="email" value="{{donor['email']}}">
+      <input type="hidden" name="amount" value="{{donor['amount']}}">
+      <input type="hidden" name="cause" value="{{donor['cause']}}">
+
+      <input type="text" placeholder="Card Number" required>
+      <input type="text" placeholder="MM/YY" required>
+      <input type="text" placeholder="CVV" required>
+
+      <button type="submit">✅ Pay Now</button>
+    </form>
+  </div>
+</body>
+</html>

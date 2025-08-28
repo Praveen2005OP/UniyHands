@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Success</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="donation-form">
+    <h2>🎉 Payment Successful!</h2>
+    <p>Thank you <b>{{donor['name']}}</b> for donating 
+       <b>${{donor['amount']}}</b> towards <b>{{donor['cause']}}</b>.</p>
+    <p>A receipt has been sent to: {{donor['email']}}</p>
+    <a href="/">🏠 Back to Home</a>
+  </div>
+</body>
+</html>

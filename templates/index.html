@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donation Page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="hero">
+    <h1>💖 Help Us Make a Difference</h1>
+    <p>"The best way to find yourself is to lose yourself in the service of others." – Gandhi</p>
+  </div>
+
+  <div class="donation-form">
+    <h2>🌍 Support the Cause</h2>
+    <form action="/pay" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Email (for receipt)">
+      <input type="number" name="amount" placeholder="Donation Amount (USD)" required>
+      <select name="cause">
+        <option>Clean Water</option>
+        <option>Food Support</option>
+        <option>Education</option>
+        <option>Healthcare</option>
+      </select>
+      <button type="submit">💳 Proceed to Payment</button>
+    </form>
+  </div>
+
+  <div class="donors">
+    <h2>🙏 Recent Donors</h2>
+    {% if donors %}
+      <ul>
+        {% for d in donors %}
+          <li><b>{{d.name}}</b> donated ${{d.amount}} for {{d.cause}}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No donations yet. Be the first donor!</p>
+    {% endif %}
+  </div>
+</body>
+</html>
