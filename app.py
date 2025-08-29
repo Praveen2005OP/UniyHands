@@ -21,7 +21,7 @@ def load_donors():
 # Save donors to JSON file
 def save_donor(donor):
     donors = load_donors()
-    donors.append(donor)
+    donors.insert(0, donor)
     with open("donors.json", "w") as f:
         json.dump(donors, f, indent=4)
 
